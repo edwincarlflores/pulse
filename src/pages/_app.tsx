@@ -1,7 +1,7 @@
-import { withTRPC } from '@trpc/next';
-import { AppType } from 'next/dist/shared/lib/utils';
-import superjson from 'superjson';
-import { AppRouter } from './api/trpc/[trpc]';
+import { withTRPC } from "@trpc/next";
+import { AppType } from "next/dist/shared/lib/utils";
+import superjson from "superjson";
+import { AppRouter } from "../backend/router";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return <Component {...pageProps} />;
@@ -15,11 +15,11 @@ export default withTRPC<AppRouter>({
      */
     const url = process.env.VERCEL_URL
       ? `https://${process.env.VERCEL_URL}/api/trpc`
-      : 'http://localhost:3000/api/trpc';
+      : "http://localhost:3000/api/trpc";
 
     return {
       url,
-      transformer: superjson
+      transformer: superjson,
       /**
        * @link https://react-query.tanstack.com/reference/QueryClient
        */
@@ -29,5 +29,5 @@ export default withTRPC<AppRouter>({
   /**
    * @link https://trpc.io/docs/ssr
    */
-  ssr: false
+  ssr: false,
 })(MyApp);
