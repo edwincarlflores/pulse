@@ -28,6 +28,7 @@ export const questionRouter = trpc
         data: {
           question: input.question,
           options: [],
+          ownerToken: "",
         },
       });
     },
