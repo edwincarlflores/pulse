@@ -9,7 +9,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
 };
 
 function getBaseUrl() {
-  if (process.env.browser) {
+  if (typeof window !== "undefined") {
     return ""; // Browser should use current path
   }
 
